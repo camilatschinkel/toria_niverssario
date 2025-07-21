@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>🎁 Surpresa de Aniversário 🎉</title>
+  <style>
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      70% { opacity: 0.7; }
+      100% { transform: translateY(-100vh) rotate(20deg); opacity: 0; }
+    }
+    .balloon {
+      position: absolute;
+      bottom: 0;
+      font-size: 30px;
+      animation: floatUp 8s ease-in forwards;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #ffe6f0, #e6f7ff);
+      text-align: center;
+      padding-top: 80px;
+      color: #333;
+    }
+
+    h1 {
+      color: #d63384;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    #mensagem {
+      display: none;
+      margin-top: 40px;
+      padding: 25px;
+      border-radius: 15px;
+      background-color: #fff0f6;
+      border: 2px dashed #d63384;
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.3em;
+      color: #6c2c5f;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      line-height: 1.8;
+    }
+
+    input[type="password"] {
+      padding: 12px;
+      font-size: 16px;
+      border: 2px solid #d63384;
+      border-radius: 8px;
+      width: 250px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      margin-top: 15px;
+      background-color: #d63384;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #bf2b74;
+    }
+
+    .emoji {
+      font-size: 1.5em;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎉 Bem-vinda à sua missão secreta! 🎁</h1>
+  <p class="emoji">🔒 Digite a senha para desbloquear sua primeira pista:</p>
+  <input type="password" id="senha" placeholder="Senha secreta...">
+  <br>
+  <button onclick="verificarSenha()">Desbloquear 💡</button>
+
+  <div id="mensagem">
+    <p>
+      ✨ “Antes de tudo, é por aqui que se entra e se sai,<br>
+      É o primeiro sorriso que a empresa atrai.<br>
+      Quando você chega tudo brilha,<br>
+      Mas não é aqui que você fica.” ✨
+    </p>
+  </div>
+
+  <script>
+    function spawnBalloons(count) {
+      const balloons = ['🎈', '🎉', '🎊', '🎁', '🎀', '✨'];
+      for(let i = 0; i < count; i++) {
+        const balloon = document.createElement('div');
+        balloon.classList.add('balloon');
+        balloon.innerHTML = balloons[Math.floor(Math.random() * balloons.length)];
+        balloon.style.left = Math.random() * 100 + 'vw';
+        balloon.style.animationDuration = '5s';
+        balloon.style.animationDelay = Math.random() + 's';
+        document.body.appendChild(balloon);
+        setTimeout(() => balloon.remove(), 5000);
+      }
+    }
+
+    function verificarSenha() {
+      var senha = document.getElementById("senha").value;
+      if (senha.trim().toUpperCase() === "BRENO") {
+        document.getElementById("mensagem").style.display = "block";
+        spawnBalloons(20);
+      } else {
+        alert("❌ Senha incorreta. Tente novamente!");
+      }
+    }
+  </script>
+
+</body>
+</html>
